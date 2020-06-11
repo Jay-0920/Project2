@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS wepin_db;
+
+CREATE DATABASE wepin_db;
