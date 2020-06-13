@@ -1,12 +1,12 @@
 // Dependencies
-let express = require("express");
+const express = require("express");
 
 // Requiring our models for syncing
-let db = require("./models");
+const db = require("./models");
 
 // Sets up the Express App
-let PORT = process.env.PORT || 8080;
-let app = express();
+const PORT = process.env.PORT || 8080;
+const app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -26,7 +26,7 @@ app.use(express.json());
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
-    });
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
   });
+});
