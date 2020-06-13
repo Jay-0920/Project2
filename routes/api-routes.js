@@ -25,26 +25,30 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/posts/:zip", function(req, res) {
-    console.log(req.body);
-    db.Post.create({
-      author: req.body.author,
-      title: req.body.title,
-      body: req.body.body
-      // comments?
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
+  // app.post("/api/posts/:zip", function(req, res) {
+  //   console.log(req.body);
+  //   db.Post.create({
+  //     author: req.body.author,
+  //     title: req.body.title,
+  //     body: req.body.body
+  //     // comments?
+  //   }).then(function(dbPost) {
+  //     res.json(dbPost);
+  //   });
+  // });
 
-  app.post("/api/posts/:city/:state/:zip", function(req, res) {
-    db.Post.create({
-      author: req.body.author,
-      title: req.body.title,
-      body: req.body.body
-      // comments?
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
+  // app.post("/api/posts/:city/:state/:zip", function(req, res) {
+  //   db.Post.create({
+  //     author: req.body.author,
+  //     title: req.body.title,
+  //     body: req.body.body
+  //     // comments?
+  //   }).then(function(dbPost) {
+  //     res.json(dbPost);
+  //   });
+  // });
+
+  // *********************************************************************************
+  // TESTING PURPOSES
+  // *********************************************************************************
 };
