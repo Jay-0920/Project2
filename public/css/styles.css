@@ -1,3 +1,17 @@
 .title-font {
   font-family: 'Montserrat Alternates', sans-serif;
-};
+}
+button.submit {
+  float: right;
+  /* color: black */
+  background-color: black;
+}
+button.search {
+  background-color: black;
+
+}
+.w3-container {
+  background-color: chartreuse;
+  text-align: center;
+
+}
