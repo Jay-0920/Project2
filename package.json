@@ -4,9 +4,12 @@
   "description": "[![star this repo](https://githubbadges.com/star.svg?user=fftab&repo=READMEGenerator&style=default)](https://github.com/fftab/READMEGenerator) [![fork this repo](https://githubbadges.com/fork.svg?user=fftab&repo=READMEGenerator&style=default)](https://github.com/fftab/READMEGenerator/fork) ## Description",
   "main": "map.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+    "test": "npm run lint",
+    "start": "node server.js",
+    "lint": "eslint --quiet .",
+    "fix": "eslint --fix .",
+    "watch": "nodemon server.js"
+  },  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jay-0920/Project2.git"
