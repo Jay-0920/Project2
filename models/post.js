@@ -3,19 +3,23 @@ module.exports = function(sequelize, DataTypes) {
     author: {
       type: DataTypes.STRING,
       default: "anonymous",
-      len: [50]
+      validation: {
+        len: [50]
+      }
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
+      validation: {
         len: [100]
       }
     },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [1]
+      validation: {
+        len: [1]
+      }
     }
   });
 

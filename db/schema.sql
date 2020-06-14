@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS wepin_db;
 
 CREATE DATABASE wepin_db;
 
-USE wepin_db;
+-- USE wepin_db;
 
 -- CREATE TABLE comments (
 --     commentID INT AUTO_INCREMENT NOT NULL,
