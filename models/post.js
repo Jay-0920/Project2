@@ -9,14 +9,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      //allowNull: false,
       validation: {
         len: [100]
+        //allowNull: false
       }
     },
     body: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      //allowNull: false,
       validation: {
         len: [1]
       }

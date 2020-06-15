@@ -6,38 +6,22 @@ $(document).ready(function() {
     $(postForm).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
 
-      // Getting jQuery references to the post form, author, title, body, and location
-      const postAuthor = $("#username")
-        .val()
-        .trim();
-      const postTitle = $("#title")
-        .val()
-        .trim();
-      const postBody = $("#body")
-        .val()
-        .trim();
-      //let location = $("#location").val().trim();
+      // Getting jQuery references to the post form, author, title, and body
+      const postAuthor = $("#username");
+      const postTitle = $("#title");
+      const postBody = $("#body");
 
       const newPost = {
-        author: postAuthor,
-        title: postTitle,
-        body: postBody
+        author: postAuthor.val().trim(),
+        title: postTitle.val().trim(),
+        body: postBody.val().trim()
       };
       console.log(newPost);
-      routeUserLocation();
+      submitPost();
     });
   }
 
-  // function routeUserLocation(Post) {
-
-  //     let location = $("#location").val().trim();
-
-  //     $.post("/api/post/" + location, Post, function() {
-  //         window.location.href = "/main"
-  //     })
-  // }
-
-  function routeUserLocation(post) {
+  function submitPost(post) {
     const location = $("#location")
       .val()
       .trim();
