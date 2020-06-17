@@ -1,21 +1,32 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define("Post", {
     author: {
       type: DataTypes.STRING,
       default: "anonymous",
-      len: [50]
+      validation: {
+        len: [50]
+      }
     },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
+      validation: {
         len: [100]
+      }
+    },
+    zipCode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validation: {
+        len: [5]
       }
     },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [1]
+      validation: {
+        len: [1]
+      }
     }
   });
 
