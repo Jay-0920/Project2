@@ -37,4 +37,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/post.html"));
 >>>>>>> 79b5df16e53e4e4564ed68f4479aa7b2dcd4a14d
   });
+
+  app.get("/all", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/displayAll.html"));
+  });
 };

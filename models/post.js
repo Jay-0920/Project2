@@ -9,9 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      //allowNull: false,
       validation: {
         len: [100]
+        //allowNull: false
       }
     },
     zipCode: {
@@ -23,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     body: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      //allowNull: false,
       validation: {
         len: [1]
       }
