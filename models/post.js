@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define("Post", {
     author: {
       type: DataTypes.STRING,
@@ -13,6 +13,13 @@ module.exports = function(sequelize, DataTypes) {
       validation: {
         len: [100]
         //allowNull: false
+      }
+    },
+    zipCode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validation: {
+        len: [5]
       }
     },
     body: {
