@@ -15,13 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         //allowNull: false
       }
     },
-    zipCode: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validation: {
-        len: [5]
-      }
-    },
     body: {
       type: DataTypes.TEXT,
       //allowNull: false,
