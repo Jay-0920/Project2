@@ -15,12 +15,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Set Handlebars.
-// let exphbs = require("express-handlebars");
-
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
-
 // Import routes and give the server access to them.
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
@@ -32,3 +26,6 @@ db.sequelize.sync().then(function() {
     console.log("App listening on http://localhost:" + PORT);
   });
 });
+
+// Goes Inside .sync() to sync with db.
+// { force: true }

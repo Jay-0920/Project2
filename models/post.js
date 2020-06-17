@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define("Post", {
     author: {
       type: DataTypes.STRING,
-      default: "anonymous",
+      defaultValue: "anonymous",
       validation: {
         len: [50]
       }
@@ -27,6 +27,13 @@ module.exports = (sequelize, DataTypes) => {
       //allowNull: false,
       validation: {
         len: [1]
+      }
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validation: {
+        len: [5]
       }
     }
   });

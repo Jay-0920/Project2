@@ -1,19 +1,17 @@
 $(document).ready(function() {
   // blogContainer holds all of our posts
   const blogContainer = $(".blog-container");
-  let posts;
 
   function getPosts() {
     $.get("/api/post", function(data) {
       console.log("Posts", data);
-      posts = data;
-      initializeRows();
+      initializeRows(data);
     });
   }
 
   getPosts();
 
-  function initializeRows() {
+  function initializeRows(posts) {
     blogContainer.empty();
     const postsToAdd = [];
     for (let i = 0; i < posts.length; i++) {
@@ -62,6 +60,7 @@ $(document).ready(function() {
       console.log(userSearch);
       $.get("/api/post/" + userSearch, function(data) {
         console.log("Posts", data);
+        initializeRows(data);
       });
     });
   }
