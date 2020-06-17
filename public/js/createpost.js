@@ -2,40 +2,31 @@ $(document).ready(function() {
   const postForm = $("#post");
 
   // submit form data
-  function postData() {
-    $(postForm).on("submit", function handleFormSubmit(event) {
-      event.preventDefault();
 
-      // Getting jQuery references to the post form, author, title, and body
-      const postAuthor = $("#username");
-      const postTitle = $("#title");
-      const postBody = $("#body");
+  $(postForm).on("submit", function(event) {
+    event.preventDefault();
 
-      const newPost = {
-        author: postAuthor.val().trim(),
-        title: postTitle.val().trim(),
-        body: postBody.val().trim()
-      };
-      console.log(newPost);
-      submitPost();
-    });
-  }
+    // Getting jQuery references to the post form, author, title, and body
+    const postAuthor = $("#username");
+    const postTitle = $("#title");
+    const postBody = $("#body");
+    const location = $("#location");
 
-  function submitPost(post) {
-    const location = $("#location")
-      .val()
-      .trim();
-    console.log(location);
-
+    const newPost = {
+      author: postAuthor.val().trim() || "anonymous",
+      title: postTitle.val().trim(),
+      body: postBody.val().trim(),
+      location: location.val().trim()
+    };
+    console.log(newPost);
     $.ajax({
       method: "POST",
-      url: "/api/post/" + location,
-      data: post
+      url: "/api/post/",
+      data: newPost
     }).then(function() {
-      window.location.href = "/main";
+      window.location.href = "/";
     });
-  }
+  });
 
   // Call postData function
-  postData();
 });
