@@ -24,6 +24,9 @@ $(document).ready(function() {
   function createNewRow(post) {
     $.get("/api/user_data").then(function(data) {
       const user = data.username;
+      if ((user = null)) {
+        user = "anonymous";
+      }
       // card div
       const cardEl = $("<div>");
       cardEl.addClass("card");
