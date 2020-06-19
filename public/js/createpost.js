@@ -2,18 +2,17 @@ $(document).ready(function() {
   const postForm = $("#post");
 
   // submit form data
-
-  $(postForm).on("submit", function(event) {
+  $(postForm).on("submit", async function(event) {
     event.preventDefault();
-
+    const { username } = await $.get("/api/user_data");
+    console.log(username);
     // Getting jQuery references to the post form, author, title, and body
-    const postAuthor = $("#username");
     const postTitle = $("#title");
     const postBody = $("#body");
     const location = $("#location");
 
     const newPost = {
-      author: postAuthor.val().trim() || "anonymous",
+      author: username || "anonymous",
       title: postTitle.val().trim(),
       body: postBody.val().trim(),
       location: location.val().trim()
