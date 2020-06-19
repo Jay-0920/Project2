@@ -1,22 +1,20 @@
 .title-font {
   font-family: 'Montserrat Alternates', sans-serif;
 }
-button.submit {
-  float: right;
-  /* color: black */
+
+#submitBtn {
+  background-color: black;
+  color: white
+}
+
+.display-4 {
+  text-align: center;
+}
+
+/* .jumbotronjumbotron-fluid {
+  padding: 70px;
+  border: 1px solid #4CAF50; */
+  
+.navbarnavbar-expand-lgnavbar-lightbg-light {
   background-color: black;
 }
-button.search {
-  background-color: black;
-
-}
-.w3-container {
-  background-color: chartreuse;
-  text-align: center;
-
-}
-
-.navbar-navbar-expand-lg-navbar-light-bg-light {
-  float: center;
-  text-align: center;
-};

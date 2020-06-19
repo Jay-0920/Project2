@@ -2,31 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Post</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Post</title>
 
-    <!-- Latest compiled and minified CSS & JS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="#">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
+  <!-- Latest compiled and minified CSS & JS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="#">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="./main.html">Home <span class="sr-only">(current)</span></a>
-                </li>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="main.html">wēpin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-            </ul>
-        </div>
-    </nav>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="main.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signup.html">SignUp/Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="post.html">Create a Post<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form>
+        <label>Search:</label><br>
+        <input type="text" id="user-search" placeholder="Enter Zip Code"><br>
+        <input type="submit" id="submitBtn">
+      </form>
+    </div>
+  </nav>
 
     <div class="container">
         <div class="row">
@@ -41,25 +57,25 @@
                         <textarea class="form-control" rows="10" id="body" placeholder="250 Characters"
                             aria-label="Search"></textarea>
 
-                        <!-- Location input field -->
-                        <div class="form-group">
-                            <br />
-                            <label for="title">Location of Incident</label>
-                            <input type="text" class="form-control" id="location" placeholder="Input Zip Code">
-                            <br />
+            <!-- Location input field -->
+            <div class="form-group">
+              <br />
+              <label for="title">Location of Incident</label>
+              <input type="text" class="form-control" id="location" placeholder="Input Zip Code">
+              <br />
 
-                        </div>
-                        <br />
-                        
-                        <button type="submit" class="btn btn-success submit btn-lg" id="submitBtn">Submit</button>
-                    </div>
-                </form>
             </div>
-        </div>
-    </div>
+            <br />
 
-    <!-- Custom Script -->
-    <script src="js/createpost.js" type="text/javascript"></script>
+            <button type="submit" class="btn btn-success submit btn-lg" id="submitBtn">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Script -->
+  <script src="js/createpost.js" type="text/javascript"></script>
 
 </body>
 
