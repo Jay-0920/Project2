@@ -5,9 +5,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes
 module.exports = function(app) {
-  // Each of the below routes just handles the HTML page that the user gets sent to.
-
-  app.get("/main", function(req, res) {
+  app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/main.html"));
   });
 
@@ -15,19 +13,18 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/post.html"));
   });
 
-  // =============================================================
-  app.get("/", function(req, res) {
+  app.get("/signup", function(req, res) {
     // If the user already has an account send them to the main page
     if (req.user) {
-      res.redirect("/main");
+      res.redirect("/");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", function(req, res) {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the main page
     if (req.user) {
-      res.redirect("/main");
+      res.redirect("/");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
