@@ -23,7 +23,7 @@ $(document).ready(function() {
       url: "/api/post/",
       data: newPost
     }).then(function() {
-      window.location.href = "/main";
+      window.location.href = "/";
     });
   });
 });
