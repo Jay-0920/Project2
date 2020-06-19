@@ -39,7 +39,7 @@ $(document).ready(function() {
       cardHeader.append(postTitle);
       const username = $("<h5>");
       username.addClass("post-username");
-      username.text(user);
+      username.text("created by: " + user);
       cardHeader.append(username);
       // creating card body
       const cardBody = $("<div>");
