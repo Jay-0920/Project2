@@ -12,48 +12,47 @@ $(document).ready(function() {
   getPosts();
 
   function initializeRows(posts) {
+    posts.sort((a, b) => a.createdAt - b.createdAt);
     blogContainer.empty();
     const postsToAdd = [];
     for (let i = 0; i < posts.length; i++) {
       postsToAdd.push(createNewRow(posts[i]));
     }
+    console.log(postsToAdd);
     blogContainer.append(postsToAdd);
   }
 
   // This function constructs a post's HTML
-  function createNewRow(post) {
-    $.get("/api/user_data").then(function(data) {
-      const user = data.username;
-      // card div
-      const cardEl = $("<div>");
-      cardEl.addClass("card");
-      $(".blog-container").append(cardEl);
-      // creating card header
-      const cardHeader = $("<div>");
-      cardHeader.addClass("card-header");
-      cardEl.append(cardHeader);
-      // creating card contents to append to card header
-      const postTitle = $("<h3>");
-      postTitle.addClass("post-title");
-      postTitle.text(post.title);
-      cardHeader.append(postTitle);
-      const username = $("<h5>");
-      username.addClass("post-username");
-      username.text("created by: " + user);
-      cardHeader.append(username);
-      // creating card body
-      const cardBody = $("<div>");
-      cardBody.addClass("card-body");
-      cardEl.append(cardBody);
-      // creating card contents to append to card body
-      const postBody = $("<p>");
-      postBody.addClass("post-body");
-      postBody.text(post.body);
-      cardBody.append(postBody);
+  async function createNewRow(post) {
+    // card div
+    const cardEl = $("<div>");
+    cardEl.addClass("card");
+    $(".blog-container").append(cardEl);
+    // creating card header
+    const cardHeader = $("<div>");
+    cardHeader.addClass("card-header");
+    cardEl.append(cardHeader);
+    // creating card contents to append to card header
+    const postTitle = $("<h3>");
+    postTitle.addClass("post-title");
+    postTitle.text(post.title);
+    cardHeader.append(postTitle);
+    const user = $("<h5>");
+    user.addClass("post-username");
+    user.text("created by: " + post.author);
+    cardHeader.append(user);
+    // creating card body
+    const cardBody = $("<div>");
+    cardBody.addClass("card-body");
+    cardEl.append(cardBody);
+    // creating card contents to append to card body
+    const postBody = $("<p>");
+    postBody.addClass("post-body");
+    postBody.text(post.body);
+    cardBody.append(postBody);
 
-      cardEl.data("post", post);
-      return cardEl;
-    });
+    cardEl.data("post", post);
+    return cardEl;
   }
 
   function searchZip() {
