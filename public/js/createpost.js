@@ -24,9 +24,7 @@ $(document).ready(function() {
       url: "/api/post/",
       data: newPost
     }).then(function() {
-      window.location.href = "/";
+      window.location.href = "/main";
     });
   });
-
-  // Call postData function
 });
