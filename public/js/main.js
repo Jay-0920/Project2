@@ -1,9 +1,9 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // blogContainer holds all of our posts
   const blogContainer = $(".blog-container");
 
   function getPosts() {
-    $.get("/api/post", function (data) {
+    $.get("/api/post", function(data) {
       console.log("Posts", data);
       initializeRows(data);
     });
@@ -77,11 +77,11 @@ $(document).ready(function () {
   }
 
   function searchZip() {
-    $("#submitBtn").on("click", function (event) {
+    $("#submitBtn").on("click", function(event) {
       const userSearch = $("#user-search").val();
       event.preventDefault();
       console.log(userSearch);
-      $.get("/api/post/" + userSearch, function (data) {
+      $.get("/api/post/" + userSearch, data => {
         console.log("Posts", data);
         initializeRows(data);
       });
