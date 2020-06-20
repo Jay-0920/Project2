@@ -1,4 +1,4 @@
-.title-font {
+/* .title-font {
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -11,10 +11,19 @@
   text-align: center;
 }
 
-/* .jumbotronjumbotron-fluid {
+.jumbotronjumbotron-fluid {
   padding: 70px;
-  border: 1px solid #4CAF50; */
+  border: 1px solid #4CAF50;
+}
   
-.navbarnavbar-expand-lgnavbar-lightbg-light {
+ .navbar .navbar-expand-lg .navbar-light .bg-light {
   background-color: black;
 }
+.body {background-color: coral;}
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+} */
