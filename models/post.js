@@ -42,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade"
     });
     Post.belongsTo(models.User, {
-      foreignKey: "author"
+      foreignKey: "author",
+      targetKey: "username"
     });
   };
 
