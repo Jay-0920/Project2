@@ -1,4 +1,4 @@
-USE wepin_db;
+USE n5hm85bd9z0vos7g;
 
 INSERT INTO post(author, title, body, location)
 VALUES ("anonymous", "George Floyd Killed by Police" , "The private autopsy by doctors hired by Mr. Floyd’s family determined that he died not just because of the knee on his neck — held there by the officer, Derek Chauvin — but also because of two other officers who helped pin him down by applying pressure on his back. All three officers were fired last week, as was a fourth officer at the scene.

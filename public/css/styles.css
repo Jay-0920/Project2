@@ -1,28 +1,32 @@
-.title-font {
+/* .title-font {
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
+#submitBtn {
 button.submit {
   float: right;
   /* color: black */
+
+/* .display-4 { */
+
+
+/* .jumbotronjumbotron-fluid {
+  padding: 70px;
+  border: 1px solid #4CAF50;
+} */
+  
+ /* .navbar .navbar-expand-lg .navbar-light .bg-light {
   background-color: black;
 }
+.body {background-color: coral;}
 
-button.search {
-  background-color: black;
-
-}
-
-.w3-container {
-  background-color: chartreuse;
+footer {
   text-align: center;
+  padding: 3px;
+  background-color: DarkSalmon;
+  color: white;
+}  */
 
-}
-
-.navbar-navbar-expand-lg-navbar-light-bg-light {
-  float: center;
-  text-align: center;
-};
 
 .post-author {
   float: "right";
