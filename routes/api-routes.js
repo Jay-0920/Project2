@@ -27,9 +27,6 @@ module.exports = app => {
       res.json(dbPost);
     });
   });
-
-  // =============================================================
-
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -74,5 +71,14 @@ module.exports = app => {
         id: req.user.id
       });
     }
+  });
+
+  app.put("api/post/vote/:id", (req, res) => {
+    // Using Vote Model
+    db.Vote.create({
+      author: req.User,
+      postId: req.params.id,
+      vote: req.body.vote
+    }).then(res.json());
   });
 };

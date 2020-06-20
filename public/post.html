@@ -4,7 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Post</title>
+    <!-- Document Name -->
+    <title>wēpost Create Post Page</title>
+
+    <!-- Google Fonts -->
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" 
+        rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <script 
+        src="https://kit.fontawesome.com/44f6844bdb.js" 
+        crossorigin="anonymous"
+    ></script>
+
+    <!-- Our CSS -->
+    <link 
+        rel="stylesheet" 
+        href="../../public/css/styles.css"
+    />
 
     <!-- Latest compiled and minified CSS & JS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
@@ -35,25 +54,22 @@
                 <form id="post">
                     <div class="form-group">
                         <label for="title">Username:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Optional" aria-label="Search">
+                        <input type="text" class="form-control" id="username" placeholder="Optional" aria-label="Search"/>
                         <br />
                         <label for="title">Title:</label>
-                        <input type="text" class="form-control" id="title">
+                        <input type="text" class="form-control" id="title"/>
                         <br />
                         <label for="body">Body:</label>
-                        <textarea class="form-control" rows="10" id="body" placeholder="250 Characters"
-                            aria-label="Search"></textarea>
+                        <textarea class="form-control" rows="10" id="body" placeholder="250 Characters" aria-label="Search"></textarea>
 
                         <!-- Location input field -->
                         <div class="form-group">
                             <br />
                             <label for="title">Location of Incident</label>
-                            <input type="text" class="form-control" id="location" placeholder="Input Zip Code">
+                            <input type="text" class="form-control" id="location" placeholder="Input Zip Code"/>
                             <br />
-
                         </div>
                         <br />
-                        
                         <button type="submit" class="btn btn-success submit btn-lg" id="submitBtn">Submit</button>
                     </div>
                 </form>
@@ -68,3 +84,17 @@
 
 
 </html>
+
+<!-- Validation Buttons -->
+<!-- <div class="form-group"> -->
+    <!-- Find Way to Display Current Validity Score. Pull from Database Value? -->
+    <!-- Labels may not be necessary... -->
+    <!-- <label for="validity-plus">Verify Pin as True</label> -->
+    <!-- <button id="validity-plus">
+        <i class="fas fa-thumbs-up"></i>
+    </button> -->
+    <!-- <label for="validity-minus">Verify Pin as False</label> -->
+    <!-- <button id="validity-minus">
+        <i class="fas fa-thumbs-down"></i>
+    </button> -->
+<!-- </div> -->

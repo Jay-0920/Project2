@@ -69,3 +69,20 @@ $(document).ready(function() {
 
   searchZip();
 });
+
+  // Click Events for Validation
+  $(document).on("click", ".upvote", incValidity);
+  $(document).on("click", ".downvote", decValidity);
+
+  // Validation Functions
+  function incValidity() {
+    // let validity = 0; // grab current post validity // sequelize validity defaults to 0
+    // validity++
+    // postReq
+    // jQuery.post(`api/post/vote/${this.data("id")}`, {vote: true});
+  }
+
+  function decValidity() {
+    // let validity = 0; // grab current validity // sequelize validity defaults to 0
+    // validity--
+  }
