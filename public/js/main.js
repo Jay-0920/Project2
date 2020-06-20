@@ -33,13 +33,34 @@ $(document).ready(function() {
     cardHeader.addClass("card-header");
     cardEl.append(cardHeader);
     // creating card contents to append to card header
+    // UpVote + DownVote
+    const upVote = $("<i>");
+    upVote.addClass("fas fa-thumbs-up");
+    const upVoteButton = $("<button>");
+    upVoteButton.addClass("upvote");
+    upVoteButton.attr("data-id", post.id);
+    upVoteButton.append(upVote);
+    cardHeader.append(upVoteButton);
+    const downVote = $("<i>");
+    downVote.addClass("fas fa-thumbs-down");
+    const downVoteButton = $("<button>");
+    downVoteButton.addClass("downvote");
+    downVoteButton.attr("data-id", post.id);
+    downVoteButton.append(downVote);
+    const data = await $.get(`/api/votes/${post.id}`);
+    const voteCount = data.length;
+    const voteCountSpan = $("<span>");
+    voteCountSpan.text(`Truth Score: ${voteCount}`);
+    cardHeader.append(voteCountSpan);
+    cardHeader.append(downVoteButton);
+    // End of Votes
     const postTitle = $("<h3>");
     postTitle.addClass("post-title");
     postTitle.text(post.title);
     cardHeader.append(postTitle);
     const user = $("<h5>");
     user.addClass("post-username");
-    user.text("created by: " + post.author);
+    user.text(`created by: ${post.author ? post.author : "anonymous"}`);
     cardHeader.append(user);
     // creating card body
     const cardBody = $("<div>");
@@ -60,7 +81,7 @@ $(document).ready(function() {
       const userSearch = $("#user-search").val();
       event.preventDefault();
       console.log(userSearch);
-      $.get("/api/post/" + userSearch, function(data) {
+      $.get("/api/post/" + userSearch, data => {
         console.log("Posts", data);
         initializeRows(data);
       });
@@ -69,3 +90,20 @@ $(document).ready(function() {
 
   searchZip();
 });
+
+// Click Events for Validation
+$(document).on("click", ".upvote", incValidity);
+$(document).on("click", ".downvote", decValidity);
+
+// Validation Functions
+function incValidity() {
+  console.log(this);
+  $.post(`api/post/vote/${$(this).data("id")}`, { vote: true });
+  window.location.reload();
+}
+
+function decValidity() {
+  console.log(this.parentElement);
+  $.post(`api/post/vote/${$(this).data("id")}`, { vote: false });
+  window.location.reload();
+}

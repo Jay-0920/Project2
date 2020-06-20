@@ -2,12 +2,33 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+
+    <!-- Document Name -->
+    <title>wēpost Main Page</title>
+
+    <!-- Google Fonts -->
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" 
+        rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <script 
+        src="https://kit.fontawesome.com/44f6844bdb.js" 
+        crossorigin="anonymous"
+    ></script>
+
+    <!-- Our CSS -->
+    <link 
+        rel="stylesheet" 
+        href="../../public/css/styles.css"
+    />
 
     <!-- Latest compiled and minified CSS & JS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="#" media="screen">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -25,9 +46,12 @@
     </p>
 
     <form>
-        <label>Search:</label><br>
+        <label for="user-search">Search:</label><br>
         <input type="text" id="user-search" placeholder="Enter Zip Code"><br>
-        <input type="submit" id="submitBtn">
+        <button type="submit" id="submitBtn">
+            <i class="fa fa-search">
+            </i>
+        </button>
     </form>
 
     <div class="container">
@@ -64,3 +88,4 @@
 </body>
 
 </html>
+

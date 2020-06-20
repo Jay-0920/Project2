@@ -9,7 +9,7 @@
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
     "watch": "nodemon server.js"
-  },  
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jay-0920/Project2.git"

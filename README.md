@@ -1,11 +1,11 @@
-# BrutalPin
+# wēpost
 ## https://coronacrew.herokuapp.com/
 
 [![star this repo](https://githubbadges.com/star.svg?user=fftab&repo=READMEGenerator&style=default)](https://github.com/fftab/READMEGenerator)
 [![fork this repo](https://githubbadges.com/fork.svg?user=fftab&repo=READMEGenerator&style=default)](https://github.com/fftab/READMEGenerator/fork)
 ## Description
 
-BrutalPin is an app that uses a JQuery plugin to allow users to pin locations of alleged incidents of police brutality on a map and make pertinent commentary about the incident. It features an Upvote/Downvote model of verification in which all voters can verify the veracity of the incident.
+Wēpost is an app that allows users to log in or remain anonymous to make posts about incidents of police brutality that are catalogued by zip code. It features an Upvote/Downvote model of verification in which all users can verify incidents.
 
 ## Table of Contents
 

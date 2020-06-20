@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+        <h1>{{ dbPost.title }}</h1>
+        <h2 class=".post-author">Written by User {{ dbPost.author }}</h2>
+        <h2>Posted on {{ dbPost.formattedDate }}</h2>
+        <button class="upvote">
+            <i class="fas fa-thumbs-up"></i>
+        </button>
+        <button class="downvote">
+            <i class="fas fa-thumbs-down"></i>
+        </button>
+        <button class="edit btn btn-info">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button class="delete btn btn-danger">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </div>
+    <p>{{ dbPost.body }}</p>
+    <h5>Location by ZIP: {{ dbPost.location }}</h5>
+</div>
