@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       //allowNull: false,
       validation: {
         len: [100]
-        //allowNull: false
       }
     },
     body: {
