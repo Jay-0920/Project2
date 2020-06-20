@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS wepin_db;
+DROP DATABASE IF EXISTS wepost_db;
 
-CREATE DATABASE wepin_db;
+CREATE DATABASE wepost_db;
 
--- USE wepin_db;
+-- USE wepost_db;
 
 -- CREATE TABLE comments (
 --     commentID INT AUTO_INCREMENT NOT NULL,

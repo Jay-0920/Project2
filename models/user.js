@@ -36,5 +36,19 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+
+  User.associate = models => {
+    User.hasMany(models.Vote, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Post, {
+      onDelete: "cascade",
+      foreignKey: "author"
+    });
+    // User.hasMany(models.Comment, {
+    //   onDelete: "cascade",
+    //   foreignKey: "author"
+    // });
+  };
   return User;
 };

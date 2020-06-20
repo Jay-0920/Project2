@@ -22,6 +22,7 @@ fs
   })
   .forEach(file => {
     const model = sequelize['import'](path.join(__dirname, file));
+    // TypeError: cannot read property 'name' of undefined
     db[model.name] = model;
   });
 

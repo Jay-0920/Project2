@@ -3,20 +3,19 @@
 }
 
 #submitBtn {
-  background-color: black;
-  color: white
-}
+button.submit {
+  float: right;
+  /* color: black */
 
-.display-4 {
-  text-align: center;
-}
+/* .display-4 { */
 
-.jumbotronjumbotron-fluid {
+
+/* .jumbotronjumbotron-fluid {
   padding: 70px;
   border: 1px solid #4CAF50;
-}
+} */
   
- .navbar .navbar-expand-lg .navbar-light .bg-light {
+ /* .navbar .navbar-expand-lg .navbar-light .bg-light {
   background-color: black;
 }
 .body {background-color: coral;}
@@ -26,4 +25,11 @@ footer {
   padding: 3px;
   background-color: DarkSalmon;
   color: white;
-} */
+}  */
+
+
+.post-author {
+  float: "right";
+  color: "blue";
+  margin-top: "-10px";
+}

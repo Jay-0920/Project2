@@ -20,6 +20,18 @@ module.exports = app => {
     });
   });
 
+  // GET Route for Votes
+  app.get("/api/votes/:id", (req, res) => {
+    db.Vote.findAll({
+      where: {
+        PostId: req.params.id
+      },
+      include: [db.Post]
+    }).then(dbPost => {
+      res.json(dbPost);
+    });
+  });
+
   // POST route for saving a new post
   app.post("/api/post/", (req, res) => {
     console.log(req.body);
@@ -27,7 +39,6 @@ module.exports = app => {
       res.json(dbPost);
     });
   });
-
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the main page.
   // Otherwise the user will be sent an error
@@ -72,5 +83,17 @@ module.exports = app => {
         id: req.user.id
       });
     }
+  });
+
+  app.post("/api/post/vote/:id", (req, res) => {
+    // Using Vote Model
+    console.log(req.User);
+    db.Vote.create({
+      author: req.User,
+      PostId: req.params.id,
+      vote: req.body.vote
+    }).then(data => {
+      res.json(data);
+    });
   });
 };

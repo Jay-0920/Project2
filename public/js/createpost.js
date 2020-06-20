@@ -12,7 +12,7 @@ $(document).ready(function() {
     const location = $("#location");
 
     const newPost = {
-      author: username || "anonymous",
+      author: username,
       title: postTitle.val().trim(),
       body: postBody.val().trim(),
       location: location.val().trim()
