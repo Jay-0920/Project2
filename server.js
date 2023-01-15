@@ -9,7 +9,7 @@ const passport = require("./config/passport");
 const db = require("./models");
 
 // Sets up the Express App
-const PORT = process.env.PORT || 3000;
+const PORT = 8000
 const app = express();
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
