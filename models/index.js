@@ -14,7 +14,7 @@ var fs = require("fs");
 var path = require("path");
 
 const sequelize = new Sequelize(DB_NAME, 'root', DB_PASSWORD, {
-  host: 'localhost',
+  host: '0.0.0.0',
   dialect: 'mysql',
   port: DB_PORT
 });
