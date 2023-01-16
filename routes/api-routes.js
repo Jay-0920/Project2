@@ -45,7 +45,6 @@ module.exports = app => {
   });
 
   app.post("/api/post/vote/:id", (req, res) => {
-    console.log(req.User);
     db.Vote.create({
       author: req.User,
       PostId: req.params.id,

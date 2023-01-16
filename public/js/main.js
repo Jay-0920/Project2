@@ -16,14 +16,13 @@ $(document).ready(function () {
     for (let i = 0; i < posts.length; i++) {
       postsToAdd.push(createNewRow(posts[i]));
     }
-    console.log(postsToAdd);
     blogContainer.append(postsToAdd);
   }
 
   async function createNewRow(post) {
     // card div
     const cardEl = $("<div>");
-    cardEl.addClass("card");
+    cardEl.addClass("card m-3");
     $(".blog-container").append(cardEl);
 
     // creating card header
@@ -84,7 +83,6 @@ $(document).ready(function () {
       const userSearch = $("#user-search").val();
 
       $.get("/api/post/" + userSearch, data => {
-        console.log("Posts", data);
         initializeRows(data);
       });
     });
