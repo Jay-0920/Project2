@@ -10,6 +10,7 @@ const db = require("./models");
 
 // Sets up the Express App
 const PORT = 8000
+const host = '0.0.0.0';
 const app = express();
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -31,7 +32,7 @@ require("./routes/api-routes.js")(app);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({}).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on http://localhost:" + PORT);
+  app.listen(PORT, host,  function() {
+    console.log("App listening on " + PORT);
   });
 });
