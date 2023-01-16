@@ -2,6 +2,11 @@
 const express = require("express");
 const session = require("express-session");
 
+const dotenv = require("dotenv");
+dotenv.config({
+  path: '.env'
+})
+
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 
@@ -9,7 +14,7 @@ const passport = require("./config/passport");
 const db = require("./models");
 
 // Sets up the Express App
-const PORT = 8000
+const PORT = process.env.PORT || 8000;
 const app = express();
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -32,5 +37,6 @@ require("./routes/api-routes.js")(app);
 // =============================================================
 db.sequelize.sync({}).then(function () {
   app.listen(PORT, function () {
-    console.log("App listening on http://localhost:" + PORT);  });
+    console.log("App listening on http://localhost:" + PORT);
+  });
 });
