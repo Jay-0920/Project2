@@ -10,7 +10,6 @@ const DB_NAME = process.env.DB_NAME;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_PORT = process.env.DB_PORT;
 
-
 var fs = require("fs");
 var path = require("path");
 
