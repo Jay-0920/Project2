@@ -1,10 +1,8 @@
-$(document).ready(function() {
-  // blogContainer holds all of our posts
+$(document).ready(function () {
   const blogContainer = $(".blog-container");
 
   function getPosts() {
-    $.get("/api/post", function(data) {
-      console.log("Posts", data);
+    $.get("/api/post", function (data) {
       initializeRows(data);
     });
   }
@@ -22,17 +20,17 @@ $(document).ready(function() {
     blogContainer.append(postsToAdd);
   }
 
-  // This function constructs a post's HTML
   async function createNewRow(post) {
     // card div
     const cardEl = $("<div>");
     cardEl.addClass("card");
     $(".blog-container").append(cardEl);
+
     // creating card header
     const cardHeader = $("<div>");
     cardHeader.addClass("card-header");
     cardEl.append(cardHeader);
-    // creating card contents to append to card header
+
     // UpVote + DownVote
     const upVote = $("<i>");
     upVote.addClass("fas fa-thumbs-up");
@@ -53,6 +51,7 @@ $(document).ready(function() {
     voteCountSpan.text(`Truth Score: ${voteCount}`);
     cardHeader.append(voteCountSpan);
     cardHeader.append(downVoteButton);
+
     // End of Votes
     const postTitle = $("<h3>");
     postTitle.addClass("post-title");
@@ -62,10 +61,12 @@ $(document).ready(function() {
     user.addClass("post-username");
     user.text(`created by: ${post.author ? post.author : "anonymous"}`);
     cardHeader.append(user);
+
     // creating card body
     const cardBody = $("<div>");
     cardBody.addClass("card-body");
     cardEl.append(cardBody);
+
     // creating card contents to append to card body
     const postBody = $("<p>");
     postBody.addClass("post-body");
@@ -77,10 +78,11 @@ $(document).ready(function() {
   }
 
   function searchZip() {
-    $("#submitBtn").on("click", function(event) {
-      const userSearch = $("#user-search").val();
+    $("#submitBtn").on("click", function (event) {
       event.preventDefault();
-      console.log(userSearch);
+
+      const userSearch = $("#user-search").val();
+
       $.get("/api/post/" + userSearch, data => {
         console.log("Posts", data);
         initializeRows(data);
@@ -97,13 +99,11 @@ $(document).on("click", ".downvote", decValidity);
 
 // Validation Functions
 function incValidity() {
-  console.log(this);
   $.post(`api/post/vote/${$(this).data("id")}`, { vote: true });
   window.location.reload();
 }
 
 function decValidity() {
-  console.log(this.parentElement);
   $.post(`api/post/vote/${$(this).data("id")}`, { vote: false });
   window.location.reload();
 }

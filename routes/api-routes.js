@@ -2,91 +2,49 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 module.exports = app => {
-  // GET route for getting all posts by zip code
-  app.get("/api/post/:zip", (req, res) => {
-    db.Post.findAll({
-      where: {
-        location: req.params.zip
-      }
-    }).then(dbPost => {
+  // POST ROUTES
+  app.get("/api/post/:zip", async (req, res) => {
+    try {
+      const dbPost = await db.Post.findAll({ where: { location: req.params.zip } });
       res.json(dbPost);
-    });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
   });
 
-  // // GET route for getting all of the posts
-  app.get("/api/post/", (req, res) => {
-    db.Post.findAll({}).then(dbPost => {
+  app.get("/api/post/", async (req, res) => {
+    try {
+      const dbPost = await db.Post.findAll({});
       res.json(dbPost);
-    });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
   });
 
-  // GET Route for Votes
-  app.get("/api/votes/:id", (req, res) => {
-    db.Vote.findAll({
-      where: {
-        PostId: req.params.id
-      },
-      include: [db.Post]
-    }).then(dbPost => {
-      res.json(dbPost);
-    });
+  app.post("/api/post/", async (req, res) => {
+    try {
+      const post = await db.Post.create(req.body);
+      return res.json(post);
+
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
   });
 
-  // POST route for saving a new post
-  app.post("/api/post/", (req, res) => {
-    console.log(req.body);
-    db.Post.create(req.body).then(dbPost => {
-      res.json(dbPost);
-    });
-  });
-  // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the main page.
-  // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
-  });
-
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
-  app.post("/api/signup", function(req, res) {
-    db.User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    })
-      .then(function() {
-        res.redirect(307, "/api/login");
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
+  // VOTE ROUTES
+  app.get("/api/votes/:id", async (req, res) => {
+    try {
+      const dbPost = await db.Vote.findAll({
+        where: { PostId: req.params.id },
+        include: [db.Post]
       });
-  });
-
-  // Route for logging user out
-  app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
-
-  // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    } else {
-      // Otherwise send back the user's username, email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        username: req.user.username,
-        email: req.user.email,
-        id: req.user.id
-      });
+      res.json(dbPost);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
   });
 
   app.post("/api/post/vote/:id", (req, res) => {
-    // Using Vote Model
     console.log(req.User);
     db.Vote.create({
       author: req.User,
@@ -95,5 +53,41 @@ module.exports = app => {
     }).then(data => {
       res.json(data);
     });
+  });
+
+  // LOGIN ROUTES
+  app.post("/api/login", passport.authenticate("local"), function (req, res) {
+    res.json(req.user);
+  });
+
+  app.post("/api/signup", function (req, res) {
+    db.User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    })
+      .then(function () {
+        res.redirect(307, "/api/login");
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
+  });
+
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
+  app.get("/api/user_data", function (req, res) {
+    if (!req.user) {
+      res.json({});
+    } else {
+      res.json({
+        username: req.user.username,
+        email: req.user.email,
+        id: req.user.id
+      });
+    }
   });
 };

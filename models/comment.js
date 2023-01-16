@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const Comment = sequelize.define("Comment", {
     author: {
       type: DataTypes.STRING,
@@ -16,15 +16,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Comment.associate = function(models) {
+  Comment.associate = function (models) {
     Comment.belongsTo(models.Post, {
       foreignKey: {
         allowNull: false
       }
     });
-    // Comment.belongsTo(models.User, {
-    //   foreignKey: "author"
-    // });
   };
 
   return Comment;

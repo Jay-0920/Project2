@@ -1,42 +1,35 @@
 // Dependencies
 const express = require("express");
 const session = require("express-session");
-
 const dotenv = require("dotenv");
-dotenv.config({
-  path: '.env'
-})
-
-// Requiring passport as we've configured it
 const passport = require("./config/passport");
-
-// Requiring our models for syncing
 const db = require("./models");
 
-// Sets up the Express App
+// Configure environment variables
+dotenv.config();
+
+// Create Express app
 const PORT = process.env.PORT || 8000;
 const app = express();
-// Serve static content for the app from the "public" directory in the application directory.
+
+// Serve static content and parse incoming data
 app.use(express.static("public"));
-// Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// We need to use sessions to keep track of our user's login status
-app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-);
+// Use sessions to keep track of user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Import routes and give the server access to them.
+// Import routes and give the server access to them
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
-// Syncing our sequelize models and then starting our Express app
-// =============================================================
-db.sequelize.sync({}).then(function () {
-  app.listen(PORT, function () {
-    console.log("App listening on http://localhost:" + PORT);
+// Start server
+db.sequelize.sync()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
   });
-});

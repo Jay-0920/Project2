@@ -1,4 +1,3 @@
-"use strict";
 const { Sequelize } = require('sequelize');
 const dotenv = require('dotenv');
 
@@ -10,8 +9,8 @@ const DB_NAME = process.env.DB_NAME;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_PORT = process.env.DB_PORT;
 
-var fs = require("fs");
-var path = require("path");
+const fs = require("fs");
+const path = require("path");
 
 const sequelize = new Sequelize(DB_NAME, 'root', DB_PASSWORD, {
   host: '0.0.0.0',
@@ -19,9 +18,8 @@ const sequelize = new Sequelize(DB_NAME, 'root', DB_PASSWORD, {
   port: DB_PORT
 });
 
-
-var basename = path.basename(module.filename);
-var db = {};
+const basename = path.basename(module.filename);
+const db = {};
 
 fs
   .readdirSync(__dirname)
