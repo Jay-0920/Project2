@@ -1,40 +1,35 @@
-$(document).ready(function () {
-  const loginForm = $("form.login");
-  const usernameInput = $("input#userName-input");
-  const emailInput = $("input#email-input");
-  const passwordInput = $("input#password-input");
+const loginForm = document.getElementById('login-form');
+const emailInput = document.getElementById('email')
+const passwordInput = document.getElementById('password')
 
-  loginForm.on("submit", function (event) {
-    event.preventDefault();
+const handleLogin = async (e) => {
+    e.preventDefault();
 
-    const userData = {
-      username: usernameInput.val().trim(),
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
-    };
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    if (!usernameInput || !userData.email || !userData.password) {
-      // Todo: Add a modal to display error message
-      return;
+    if (!email || !password) {
+        console.log('Please enter a email and password');
+        return;
     }
 
-    loginUser(userData.username, userData.email, userData.password);
-    usernameInput.val("");
-    emailInput.val("");
-    passwordInput.val("");
-  });
+    const loginParams = { email, password };
 
-  function loginUser(username, email, password) {
-    $.post("/api/login", {
-      username: username,
-      email: email,
-      password: password
-    })
-      .then(function () {
-        window.location.replace("/");
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-});
+    // fetch to /auth/login
+    const response = await fetch('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(loginParams),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    console.log(response);
+
+    if (!response.ok) {
+        console.log('Failed to login');
+    }
+
+    // if successful, redirect to homepage
+    document.location.replace('/');
+}
+
+loginForm.addEventListener('submit', handleLogin);

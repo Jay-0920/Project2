@@ -5,39 +5,26 @@ dotenv.config({
   path: './.env',
 });
 
-const DB_NAME = process.env.DB_NAME;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_PORT = process.env.DB_PORT;
+const { DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } = process.env;
 
-const fs = require("fs");
-const path = require("path");
-
-const sequelize = new Sequelize(DB_NAME, 'root', DB_PASSWORD, {
-  host: '0.0.0.0',
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+  host: 'localhost',
   dialect: 'mysql',
   port: DB_PORT
 });
 
-const basename = path.basename(module.filename);
-const db = {};
 
-fs
-  .readdirSync(__dirname)
-  .filter(function (file) {
-    return (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js");
-  })
-  .forEach(function (file) {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize);
-    db[model.name] = model;
-  });
+sequelize.sync();
 
-Object.keys(db).forEach(function (modelName) {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+const testConnection = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
   }
-});
+}
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+testConnection();
 
-module.exports = db;
+module.exports = sequelize;

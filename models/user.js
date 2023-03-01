@@ -1,46 +1,41 @@
-const bcrypt = require("bcryptjs");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../models/index.js')
+const Post = require('./post.js');
 
-module.exports = function (sequelize, DataTypes) {
-  const User = sequelize.define("User", {
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false
+const User = sequelize.define("User", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true
     }
-  });
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+}, {
+  paranoid: true
+});
 
-  User.prototype.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-  };
+User.hasMany(Post, {
+  foreignKey: "authorId",
+  ondelete: "cascade"
+})
 
-  User.addHook("beforeCreate", user => {
-    user.password = bcrypt.hashSync(
-      user.password,
-      bcrypt.genSaltSync(10),
-      null
-    );
-  });
+Post.belongsTo(User, {
+  foreignKey: "authorId"
+});
 
-  User.associate = models => {
-    User.hasMany(models.Vote, {
-      onDelete: "cascade"
-    });
-    User.hasMany(models.Post, {
-      onDelete: "cascade",
-      foreignKey: "author"
-    });
-  };
-  return User;
-};
+module.exports = User;
