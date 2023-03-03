@@ -15,21 +15,21 @@ const handleLogin = async (e) => {
 
     const loginParams = { email, password };
 
-    // fetch to /auth/login
     const response = await fetch('/auth/login', {
         method: 'POST',
         body: JSON.stringify(loginParams),
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // send cookies
     });
-
-    console.log(response);
 
     if (!response.ok) {
         console.log('Failed to login');
+        return;
     }
 
-    // if successful, redirect to homepage
+    // TODO: Navigate to home from the route
     document.location.replace('/');
+
 }
 
 loginForm.addEventListener('submit', handleLogin);

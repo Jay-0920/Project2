@@ -6,10 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body>
-    <div>Welcome, {{username}}!</div>
+    <div class="container">
+        <h1 class="welcome-message"></h1>
+        <form class="search-form" action="/" method="get">
+            <input type="text" name="zip-code" placeholder="Enter zip code...">
+            <button type="submit"><i class="ion-ios-search"></i></button>
+        </form>
+        <button class="create-post-button">Create Post</button>
+        <button class="logout-button">Logout</button>
+    </div>
+
+    <main>
+        <div class="container">
+            <h2>Latest Posts</h2>
+            <ul class="posts-list">
+                <li>
+                    <h3 class="post-title">Title of Post 1</h3>
+                    <p class="post-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus, nisl id
+                        faucibus congue, dolor augue viverra quam, vel aliquet justo mauris eu lorem.</p>
+                    <p class="post-location">Location of Incident: New York, NY</p>
+                    <div class="post-buttons">
+                        <button class="upvote-button"><i class="ion-ios-arrow-up"></i></button>
+                        <span class="vote-count">12</span>
+                        <button class="downvote-button"><i class="ion-ios-arrow-down"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <h3 class="post-title">Title of Post 2</h3>
+                    <p class="post-body">Nullam sodales magna sit amet justo convallis auctor. Praesent ut commodo enim.
+                        Duis semper sapien vel leo congue consectetur.</p>
+                    <p class="post-location">Location of Incident: Los Angeles, CA</p>
+                    <div class="post-buttons">
+                        <button class="upvote-button"><i class="ion-ios-arrow-up"></i></button>
+                        <span class="vote-count">12</span>
+                        <button class="downvote-button"><i class="ion-ios-arrow-down"></i></button>
+                    </div>
+                </li>
+                <li>
+                    <h3 class="post-title">Title of Post 3</h3>
+                    <p class="post-body">Vivamus scelerisque, metus in molestie suscipit, ex dui luctus velit, eu
+                        dignissim purus libero ac purus. </p>
+                    <p class="post-location">Location of Incident: Chicago, IL</p>
+                    <div class="post-buttons">
+                        <button class="upvote-button"><i class="ion-ios-arrow-up"></i></button>
+                        <span class="vote-count">12</span>
+                        <button class="downvote-button"><i class="ion-ios-arrow-down"></i></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 WePost. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/home.js"></script>
 </body>
 
 </html>

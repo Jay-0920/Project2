@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-message {
+    margin-right: 20px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search-form input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.create-post-button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.logout-button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.posts-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.posts-list li {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 100%;
+
+    animation: fade-in 0.5s ease-in-out forwards;
+}
+
+.post-title {
+    margin-bottom: 10px;
+}
+
+.post-body {
+    margin-bottom: 10px;
+}
+
+.post-location {
+    font-style: italic;
+}
+
+.post-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.upvote-button,
+.downvote-button {
+    padding: 5px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.upvote-button:hover,
+.downvote-button:hover {
+    cursor: pointer;
+}
+
+.vote-count {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.ion-ios-search:before,
+.ion-ios-arrow-up:before,
+.ion-ios-arrow-down:before {
+    font-size: 24px;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

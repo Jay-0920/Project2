@@ -1,37 +1,35 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
-const User = require("../../models/user");
-const { comparePassword } = require('../../controllers/auth-controller');
+const passport = require('passport');
 
 dotenv.config({
     path: '../../.env',
 });
 
 const router = express.Router();
-const { JWT_SECRET } = process.env;
 
-router.post('/login', async (req, res) => {
-    try {
-        console.log('Login request received');
-        const { email, password } = req.body;
+router.post('/login', passport.authenticate('local'), (req, res) => {
+    const user = req.user;
+    return res.status(200).json({ message: "login successful", user: user });
+});
 
-        const userWithEmail = await User.findOne({
-            where: {
-                email: email
-            }
-        });
+router.delete('/logout', (req, res) => {
+    const user = req.user;
+    if (!user) {
+        return res.status(401).json({ message: 'Could not find user' });
+    };
 
-        if (!await comparePassword(password, userWithEmail.password)) {
-            return res.status(400).json({ message: "Email or password does not match" });
-        }
+    req.logout();
+    return res.status(200).json({ message: "logout successful", user: user });
+});
 
-        const accessToken = jwt.sign({ id: userWithEmail.id, email: userWithEmail.email }, JWT_SECRET);
 
-        return res.status(200).json({ message: "login successful", token: accessToken });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+router.get('/profile', (req, res) => {
+    const user = req.user
+    if (!user) {
+        return res.status(401).json({ message: 'User not authenticated' });
     }
-})
+    return res.status(200).json({ message: "user found", user: user });
+});
 
 module.exports = router;
