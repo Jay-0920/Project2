@@ -8,6 +8,8 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
+    background-color: #222;
+    color: #eee;
 }
 
 .container {
@@ -17,7 +19,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #111;
     color: #fff;
     padding: 20px;
     display: flex;
@@ -39,6 +41,8 @@ header {
     padding: 10px;
     border: none;
     border-radius: 5px;
+    background-color: #444;
+    color: #eee;
 }
 
 .search-form button {
@@ -53,12 +57,16 @@ header {
 
 .create-post-button {
     padding: 10px 20px;
-    background-color: #fff;
-    color: #333;
+    background-color: #4CAF50;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 20px;
+}
+
+.create-post-button:hover {
+    background-color: #3e8e41;
 }
 
 .logout-button {
@@ -90,23 +98,25 @@ h2 {
 .posts-list li {
     padding: 20px;
     margin-bottom: 20px;
-    background-color: #f0f0f0;
+    background-color: #333;
     border-radius: 5px;
     width: 100%;
-
     animation: fade-in 0.5s ease-in-out forwards;
 }
 
 .post-title {
     margin-bottom: 10px;
+    color: #eee;
 }
 
 .post-body {
     margin-bottom: 10px;
+    color: #ccc;
 }
 
 .post-location {
     font-style: italic;
+    color: #ccc;
 }
 
 .post-buttons {
@@ -117,8 +127,8 @@ h2 {
 .upvote-button,
 .downvote-button {
     padding: 5px;
-    background-color: #fff;
-    color: #333;
+    background-color: #444;
+    color: #eee;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -134,12 +144,14 @@ h2 {
     font-size: 16px;
     font-weight: bold;
     margin-right: 5px;
+    color: #eee;
 }
 
 .ion-ios-search:before,
 .ion-ios-arrow-up:before,
 .ion-ios-arrow-down:before {
     font-size: 24px;
+    color: #eee;
 }
 
 @keyframes fade-in {

@@ -27,9 +27,7 @@ const handleLogin = async (e) => {
         return;
     }
 
-    // TODO: Navigate to home from the route
-    document.location.replace('/');
-
+    window.location.href = '/';
 }
 
 loginForm.addEventListener('submit', handleLogin);

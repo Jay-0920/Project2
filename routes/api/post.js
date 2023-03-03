@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 const Post = require('../../models/post.js');
-
-// router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     res.send(`Hello ${req.user.username}!`);
-// });
+const User = require('../../models/user.js');
 
 router.route('/')
     .get(async (req, res) => {
@@ -18,8 +14,13 @@ router.route('/')
     })
     .post(async (req, res) => {
         try {
-            const { title, body, location } = req.body;
+            const { userId, title, body, location } = req.body;
+
+            const user = await User.findByPk(userId);
+            if (!user) throw new Error('User not found');
+
             const post = await Post.create({
+                authorId: userId,
                 title,
                 body,
                 location
