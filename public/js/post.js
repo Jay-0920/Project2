@@ -33,19 +33,29 @@ const retrievePosts = async () => {
     }
 }
 
-const renderPosts = (posts) => {
+const renderPosts = async (posts) => {
     if (posts.length === 0) {
-        postsList.innerHTML = '<p>No posts found.</p>';
+        postsList.innerHTML = `<p class='not-found'>No posts found.</p>`;
         return;
     }
 
-    const postsHTML = posts.map((post) => {
+    const postsHTML = await Promise.all(posts.map(async (post) => {
+        const response = await fetch(`/user/${post.authorId}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+        });
+
+        const author = (await response.json());
+        const { username } = author;
+
         return (
             `
             <li key=${post.id}>
             <h3 class="post-title">${post.title}</h3>
             <p class="post-body">${post.body}</p>
             <p class="post-location">Location of Incident: ${post.location}</p>
+            <p class="post-username">Posted by: ${username}</p>
             <div class="post-buttons">
                 <button class="upvote-button"><i class="ion-ios-arrow-up"></i></button>
                 <span class="vote-count">12</span>
@@ -53,11 +63,11 @@ const renderPosts = (posts) => {
             </div>
         </li>
             `
-        )
-    }).join('');
+        );
+    }));
 
-    postsList.innerHTML = postsHTML;
-}
+    postsList.innerHTML = postsHTML.join('');
+};
 
 const createPost = async (e) => {
     e.preventDefault();
@@ -70,7 +80,7 @@ const createPost = async (e) => {
     const { id } = user;
 
     if (!title || !body || !location) {
-        console.log('Please fill out all fields');
+        alert('Please fill out all fields');
         return;
     }
 
@@ -82,7 +92,7 @@ const createPost = async (e) => {
     });
 
     if (!response.ok) {
-        console.log('Error creating post');
+        alert('Error creating post');
         return;
     }
 

@@ -1,43 +1,37 @@
-# wēpost
+# WePost
 
-## Description
+WePost is a social platform where users can create and share posts about incidents of police brutality that are catalogued by zip code. It features an Upvote/Downvote model of verification in which all users can verify incidents.
 
-Wēpost is an app that allows users to log in or remain anonymous to make posts about incidents of police brutality that are catalogued by zip code. It features an Upvote/Downvote model of verification in which all users can verify incidents.
+## Features
 
-## Table of Contents
+- User authentication and authorization using sessions.
+- Create, edit, and delete posts.
+- Upvote and downvote posts.
+- Search for posts by zip code.
 
-* [Installation](#installation)
+## Technologies Used
 
-* [Usage](#usage)
+- Node.js
+- Express.js
+- MySQL
+- HTML/CSS/JavaScript
 
-* [License](#license)
+## Getting Started
 
-* [Contributing](#contributing)
+To get started with this project, follow these steps:
 
-* [Testing](#testing)
+1. Clone this repository to your local machine.
+2. Install the dependencies by running npm install.
+3. Start the server by running npm start.
+4. Navigate to http://localhost:8000 in your web browser.
 
-* [Questions](#questions)
+## Dependencies
 
-## Installation
+- bcrypt
+- express
+- sequelize
+- passport
 
-To install necessary dependencies, run the following command:
+## Authors
 
-npm i
-
-## Usage
-
-This repository is managed by GitHub users Jay-0920, jordanoneal and fftab. For any inquiries, open an issue in this repository. Thank you.
-
-## License
-
-MIT
-
-## Contributing
-
-We are not currently accepting contributions to the repository. For any other questions or concerns, open an issue in this repository. Thank you.
-
-## Testing
-
-To run tests, run the following command:
-
-npm test
+[Jordan O'Neal](https://github.com/jordanoneal)

@@ -38,4 +38,16 @@ router.post('/register', async (req, res) => {
     }
 })
 
+router.route('/:id')
+    .get(async (req, res) => {
+        try {
+            const response = await User.findByPk(req.params.id);
+            if(!response) throw new Error('User not found');
+            return res.status(200).json(response);
+
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
+    })
+
 module.exports = router;

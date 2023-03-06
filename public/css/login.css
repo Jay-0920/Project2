@@ -14,6 +14,16 @@ body {
   color: #eee;
 }
 
+.logo-container {
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+}
+
 #login-form {
   display: flex;
   flex-direction: column;
@@ -26,10 +36,6 @@ body {
   max-width: 400px;
   width: 100%;
   animation: fadeIn 0.5s ease-in-out;
-}
-
-.form-header {
-  margin-bottom: 30px;
 }
 
 .form-header h2 {
@@ -91,6 +97,7 @@ button[type="submit"] {
   width: 100%;
   max-width: 300px;
   animation: slideIn 0.5s ease-in-out;
+  margin-top: 10px;
 }
 
 button[type="submit"]:hover {
