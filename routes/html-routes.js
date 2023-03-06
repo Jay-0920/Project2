@@ -17,4 +17,11 @@ router.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/views/login.html'));
 });
 
+router.get('/register', (req, res) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.sendFile(path.join(__dirname, '../public/views/register.html'));
+})
+
 module.exports = router;

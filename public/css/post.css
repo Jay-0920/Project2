@@ -17,10 +17,10 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #222;
     margin: 20% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #333;
     max-width: 600px;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
 }
@@ -48,11 +48,13 @@
 .create-post-form h2 {
     margin-top: 0;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .create-post-form label {
     font-weight: bold;
     margin-bottom: 5px;
+    color: #fff;
 }
 
 .create-post-form input {
@@ -61,6 +63,8 @@
     border: none;
     border-radius: 3px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: #333;
+    color: #fff;
 }
 
 .create-post-form textarea {
@@ -69,21 +73,27 @@
     border: none;
     border-radius: 3px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: #333;
+    color: #fff;
     height: 150px;
 }
 
 .create-post-form input:focus,
 .create-post-form textarea:focus {
     outline: none;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 #submit-post-button {
-    background-color: #4CAF50;
+    background-color: #2c3e50;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 3px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+}
+
+#submit-post-button:hover {
+    background-color: #34495e;
 }

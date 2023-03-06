@@ -8,6 +8,56 @@ const postTitleInput = document.getElementById('post-title');
 const postBodyInput = document.getElementById('post-body');
 const postLocationInput = document.getElementById('post-location');
 const postSubmitButton = document.getElementById('submit-post-button');
+const postsList = document.querySelector('.posts-list');
+const seachFormInput = document.querySelector('.search-form-input');
+const searchFormButton = document.querySelector('.search-form-button');
+
+const retrievePosts = async () => {
+    try {
+        const response = await fetch('/post', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+        });
+
+        const posts = await response.json();
+        posts.sort((a, b) => {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+
+        renderPosts(posts);
+
+    } catch (err) {
+        console.log(err);
+        return undefined;
+    }
+}
+
+const renderPosts = (posts) => {
+    if (posts.length === 0) {
+        postsList.innerHTML = '<p>No posts found.</p>';
+        return;
+    }
+
+    const postsHTML = posts.map((post) => {
+        return (
+            `
+            <li key=${post.id}>
+            <h3 class="post-title">${post.title}</h3>
+            <p class="post-body">${post.body}</p>
+            <p class="post-location">Location of Incident: ${post.location}</p>
+            <div class="post-buttons">
+                <button class="upvote-button"><i class="ion-ios-arrow-up"></i></button>
+                <span class="vote-count">12</span>
+                <button class="downvote-button"><i class="ion-ios-arrow-down"></i></button>
+            </div>
+        </li>
+            `
+        )
+    }).join('');
+
+    postsList.innerHTML = postsHTML;
+}
 
 const createPost = async (e) => {
     e.preventDefault();
@@ -35,17 +85,42 @@ const createPost = async (e) => {
         console.log('Error creating post');
         return;
     }
-    
+
     console.log('Post created successfully');
     modal.style.display = 'none';
     createPostForm.reset();
+
+    await retrievePosts();
 }
 
+const searchPosts = async (e) => {
+    e.preventDefault();
+
+    if (seachFormInput.value.trim() === '') {
+        await retrievePosts();
+        return;
+    }
+
+    const response = await fetch(`/post/location/${seachFormInput.value}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+    });
+
+    const posts = await response.json();
+    posts.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
+    renderPosts(posts);
+
+    seachFormInput.value = '';
+}
+
+retrievePosts();
 
 createPostButton.addEventListener("click", () => modal.style.display = 'block');
-
 closeModal.addEventListener('click', () => modal.style.display = 'none');
-
 window.onclick = (e) => {
     if (e.target == modal) {
         modal.style.display = 'none';
@@ -53,3 +128,4 @@ window.onclick = (e) => {
 }
 
 postSubmitButton.addEventListener('click', createPost);
+searchFormButton.addEventListener('click', searchPosts);

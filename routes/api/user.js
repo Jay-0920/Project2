@@ -5,6 +5,16 @@ const { hashPassword } = require('../../controllers/auth-controller');
 
 const router = express.Router();
 
+router.route('/')
+    .get(async (req, res) => {
+        try {
+            const users = await User.findAll();
+            return res.status(200).json(users);
+        } catch (error) {
+            return res.status(500).json({ message: err.message });
+        }
+    })
+
 router.post('/register', async (req, res) => {
     try {
         const { username, email, password } = req.body;
