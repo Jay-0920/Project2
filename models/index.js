@@ -6,12 +6,17 @@ dotenv.config({
 });
 
 const { DB_NAME, DB_PASSWORD, DB_PORT, DB_USER, DB_HOST_NAME } = process.env;
+const { MYSQLUSER, MYSQLPASSWORD, MYSQLHOST, MYSQLPORT, MYSQLDATABASE } = process.env;
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-  host: DB_HOST_NAME,
-  dialect: 'mysql',
-  port: DB_PORT
-});
+const dbURL = `mysql://${{ MYSQLUSER }}:${{ MYSQLPASSWORD }}@${{ MYSQLHOST }}:${{ MYSQLPORT }}/${{ MYSQLDATABASE }}`
+
+// const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+//   host: DB_HOST_NAME,
+//   dialect: 'mysql',
+//   port: DB_PORT
+// });
+
+const sequelize = new Sequelize(dbURL);
 
 
 sequelize.sync();
