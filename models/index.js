@@ -1,38 +1,35 @@
-'use strict';
+const { Sequelize } = require('sequelize');
+const dotenv = require('dotenv');
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
-
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
-
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
-    // TypeError: cannot read property 'name' of undefined
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+dotenv.config({
+  path: './.env',
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+const { DB_NAME, DB_PASSWORD, DB_PORT, DB_USER, DB_HOST_NAME } = process.env;
+const { MYSQLUSER, MYSQLPASSWORD, MYSQLHOST, MYSQLPORT, MYSQLDATABASE } = process.env;
 
-module.exports = db;
+const dbURL = `mysql://${{ MYSQLUSER }}:${{ MYSQLPASSWORD }}@${{ MYSQLHOST }}:${{ MYSQLPORT }}/${{ MYSQLDATABASE }}`
+
+// const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+//   host: DB_HOST_NAME,
+//   dialect: 'mysql',
+//   port: DB_PORT
+// });
+
+const sequelize = new Sequelize(dbURL);
+
+
+sequelize.sync();
+
+const testConnection = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
+
+testConnection();
+
+module.exports = sequelize;
