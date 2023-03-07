@@ -5,10 +5,10 @@ dotenv.config({
   path: './.env',
 });
 
-const { DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } = process.env;
+const { DB_NAME, DB_PASSWORD, DB_PORT, DB_USER, DB_HOST_NAME } = process.env;
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-  host: 'localhost',
+  host: DB_HOST_NAME,
   dialect: 'mysql',
   port: DB_PORT
 });
